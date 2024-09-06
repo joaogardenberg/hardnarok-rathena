@@ -1,0 +1,1 @@
+./configure --enable-packetver=20220406 --enable-prere=yes && make clean && make server
