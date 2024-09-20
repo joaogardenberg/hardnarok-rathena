@@ -1,0 +1,1 @@
+REPLACE INTO `item_db` (`id`,`name_aegis`,`name_english`,`type`,`price_buy`,`flag_buyingstore`,`trade_override`,`trade_nodrop`) VALUES (6635,'Blacksmith_Blessing','Blacksmith Blessing','Etc',20,true,100,true);
