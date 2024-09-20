@@ -1,22 +1,6 @@
-//===== rAthena Script =======================================
-//= Job Master
-//===== Description: =========================================
-//= A fully functional job changer.
-//===== Additional Comments: =================================
-//= 1.0 Initial script. [Euphy]
-//= 1.1 Fixed reset on Baby job change.
-//= 1.2 Added Expanded Super Novice support and initial Kagerou/Oboro support.
-//= 1.3 Kagerou/Oboro added.
-//= 1.4 Rebellion added.
-//= 1.5 Added option to disable RebirthClass. [mazvi]
-//= 1.6 Added option to get job related equipment on change. [Braniff]
-//= 1.7 Readability changes. Also added BabyExpanded and BabySummoner classes. [Jey]
-//= 1.8 Added option to disable Baby Novice Only but Baby Class can be Enabled [mazvi]
-//= 1.9 Migrate/Integrate to Global Functions Platinum Skills. [mazvi]
-//= 2.0 Added 4th class [Lemongrass]
-//============================================================
+//===== rAthena Script
 
-prontera,153,193,6	script	Job Master	123,{
+prontera,149,194,5	script	Job Master	4_M_JOB_KNIGHT1,{
 function Get_Job_Equip;
 // Checks if the Player has the required level.
 // closes if not, returns if yes
@@ -24,14 +8,15 @@ function	Require_Level	{
 	if (BaseLevel < getarg(0) || JobLevel < getarg(1)) {
 		.@blvl = getarg(0) - BaseLevel;
 		.@jlvl = getarg(1) - JobLevel;
+		mes .NPCName$;
 		mes "Level requirement:";
 		mes ((getarg(0)>1)? 
-			"^bb0000"+getarg(0)+"^000000 (^bb0000Base^000000) / ":"")+"^00bb00"+
-			getarg(1)+"^000000 (^00bb00Job^000000)";
-		mes "You need " +
-			((.@blvl > 0) ? "^bb0000"+.@blvl+"^000000 more base levels " + 
+			"^0055FF"+getarg(0)+"^000000 (Base) / ":"")+"^0055FF"+
+			getarg(1)+"^000000 (Job)";
+		mes "\nYou need " +
+			((.@blvl > 0) ? "^0055FF"+.@blvl+"^000000 more base levels " + 
 				((.@jlvl > 0) ? "and " : "") : "") +
-			((.@jlvl > 0) ? "^00bb00"+.@jlvl+"^000000 more job levels " : "") +
+			((.@jlvl > 0) ? "^0055FF"+.@jlvl+"^000000 more job levels " : "") +
 			"to continue.";
 		close;
 	}
@@ -108,20 +93,23 @@ function	Check_Riding	{
 	// would make this NPC bigger just to handle with
 	// those special cases.
 	if (checkfalcon() || checkcart() || checkriding() || ismounting()) {
-		mes "Please remove your " +
-			((checkfalcon()) ? "falcon" : "") +
-			((checkcart()) ? "cart" : "") +
-			((checkriding()) ? "Peco" : "") +
-			((ismounting()) ? "mount" : "") +
-			" before proceeding.";
+		message strcharinfo(0),
+			"Please remove your " +
+			(checkfalcon() ? "falcon"
+				: checkcart() ? "cart"
+				: checkriding() || ismounting() ? "ride"
+				: "") +
+			".";
 		close;
+		end;
 	}
 	return;
 }
 function	Check_SkillPoints	{
 	if (.SkillPointCheck && SkillPoint) {
-		mes "Please use all your skill points before proceeding.";
+		message strcharinfo(0), "Please use all your skill points.";
 		close;
+		end;
 	}
 	return;
 }
@@ -138,7 +126,6 @@ function	Job_Options	{
 }
 
 // Begin of the NPC
-	mes .NPCName$;
 	Check_Riding();
 	Check_SkillPoints();
 
@@ -297,7 +284,9 @@ function	Job_Menu	{
 	while(true) {
 		.@opt_cnt =  getarraysize(getarg(0));
 		if( .@opt_cnt <= 0 ) {
-			mes "No more jobs are available.";
+			if (.Platinum)
+				callfunc "F_GetPlatinumSkills";
+			message strcharinfo(0), "No more jobs available.";
 			close;
 		}
 
@@ -305,6 +294,7 @@ function	Job_Menu	{
 		if (.@opt_cnt > 1) {
 			// Multiple job classes given. Select one and save it to .@class
 			// After that confirm .@class
+			mes .NPCName$;
 			mes "Select a job.";
 			.@menu$ = "";
 			for (.@i = 0; .@i < .@opt_cnt; .@i++) {
@@ -314,12 +304,11 @@ function	Job_Menu	{
 					.@jobname$ = jobname(getelementofarray(getarg(0), .@i));
 				.@menu$ = .@menu$ + " ~ " + .@jobname$ + ":";
 			}
-			.@menu$ = .@menu$+" ~ ^777777Cancel^000000";
+			.@menu$ = .@menu$+"^777777 ~ Cancel^000000";
 			.@selected = select(.@menu$) - 1;
 			if( .@selected < 0 || .@selected >= .@opt_cnt )
 				close;
 			next;
-			mes .NPCName$;
 		}
 		.@class = getelementofarray(getarg(0), .@selected);
 		if ((.@class == Job_Super_Novice || .@class == Job_Super_Baby) &&
@@ -335,7 +324,6 @@ function	Job_Menu	{
 		// Confirm the Class
 		Confirm_Change(.@class, .@opt_cnt > 1);
 		next;
-		mes .NPCName$;
 	}
 	return;
 }
@@ -347,7 +335,7 @@ function	Job_Change	{
 	.@to_cls = getarg(0);
 	next;
 	mes .NPCName$;
-	mes "You are now " + callfunc("F_InsertArticle", jobname(.@to_cls)) + "!";
+	mes "You are now " + callfunc("F_GetArticle", jobname(.@to_cls)) + " ^0055FF" + jobname(.@to_cls) + "^000000!";
 	if (.@to_cls == Job_Novice_High && .LastJob)
 		lastJob = Class; // Saves the lastJob for rebirth
 	jobchange .@to_cls;
@@ -373,6 +361,7 @@ function	Confirm_Change	{
 	// Player confirms he want to change into .@class
 	.@class = getarg(0, -1);
 	.@back = getarg(1, false);
+	mes .NPCName$;
 	if( .@class < 0 || eaclass(.@class) == -1 ) {
 		mes "Unknown Class Error.";
 		close;
@@ -380,9 +369,9 @@ function	Confirm_Change	{
 	mes "Do you want to change into ^0055FF"+jobname(.@class)+"^000000 class?";
 	.@job_option$ = " ~ Change into ^0055FF"+jobname(.@class)+"^000000 class";
 	if( .@class == Job_Novice_High)
-		.@job_option$ = " ~ ^0055FFRebirth^000000";
+		.@job_option$ = "^0055FF ~ Rebirth^000000";
 	
-	if (select(.@job_option$+": ~ ^777777" + 
+	if (select(.@job_option$+":^777777 ~ " + 
 			((.@back) ?"Go back" : "Cancel") + "^000000") == 1) {
 		Job_Change(.@class);
 	}
@@ -500,21 +489,21 @@ function	Get_Job_Equip	{
 
 OnInit:
 	// Initialisation, do not edit these
-	.NPCName$ = "[Job Master]";
+	.NPCName$ = "^0055FF[Job Master]^000000\n";
 	
 	// Settings
-	.FourthClass = true;				// Enable fourth classes?
-	.FourthExpanded = true;				// Enable new expanded fourth classes: Ex. Hyper Novice, Rebellion, Shinkiro/Shiranui?
-	.ThirdClass = true;					// Enable third classes?
+	.FourthClass = false;				// Enable fourth classes?
+	.FourthExpanded = false;				// Enable new expanded fourth classes: Ex. Hyper Novice, Rebellion, Shinkiro/Shiranui?
+	.ThirdClass = false;					// Enable third classes?
 	.RebirthClass = true;				// Enable rebirth classes?
 	.SecondExpanded = true;				// Enable new expanded second classes: Ex. Super Novice, Kagerou/Oboro, Rebellion?
 	.BabyNovice = true;					// Enable Baby novice classes? Disable it if you like player must have parent to get job baby.
 	.BabyClass = true;					// Enable Baby classes?
-	.BabyThird = true;					// Enable Baby third classes?
+	.BabyThird = false;					// Enable Baby third classes?
 	.BabyExpanded = true;				// Enable Baby Expanded classes: Ex. Baby Ninja, Baby Taekwon, etc.
 	.BabySummoner = true;				// Enable Baby Summoner?
 	.LastJob = true;					// Enforce linear class changes?
-	.SkillPointCheck = true;			// Force player to use up all skill points?
+	.SkillPointCheck = false;			// Force player to use up all skill points?
 	.Platinum = true;					// Get platinum skills automatically?
 	.GetJobEquip = false;				// Get job equipment (mostly weapons) on job change?
 
@@ -540,4 +529,3 @@ OnInit:
 	}
 	end;
 }
-

@@ -1,0 +1,78 @@
+//===== rAthena Script
+
+prontera,139,182,7	script	Mount Master	4_F_JOB_BLACKSMITH,{
+	.@canCart = getskilllv("MC_PUSHCART");
+	.@canFalcon = getskilllv("HT_FALCON");
+	.@canRide = getskilllv("KN_RIDING");
+
+	if (!.@canCart && !.@canFalcon && !.@canRide) {
+		message strcharinfo(0), "You can't have any mounts.";
+		end;
+	}
+
+	.@gotCart = false;
+	.@gotFalcon = false;
+	.@gotRide = false;
+	.@hasCart = false;
+	.@hasFalcon = false;
+	.@hasRide = false;
+
+	if (.@canCart) {
+		if (checkcart()) .@hasCart = true;
+		else { setcart; .@gotCart = true; }
+	}
+
+	if (.@canFalcon) {
+		if (checkfalcon()) .@hasFalcon = true;
+		else { setfalcon; .@gotFalcon = true; }
+	}
+	
+	if (.@canRide) {
+		if (checkriding() || ismounting()) .@hasRide = true;
+		else { setriding; .@gotRide = true; }
+	}
+
+	if (.@gotCart) {
+		if (.@gotFalcon) {
+			if (.@gotRide) {
+				message strcharinfo(0), "You got yourself a brand new cart, a fiercy falcon and a loyal ride!";
+			} else {
+				message strcharinfo(0), "You got yourself a brand new cart and a fiercy falcon!";
+			}
+		} else if (.@gotRide) {
+			message strcharinfo(0), "You got yourself a brand new cart and a loyal ride!";
+		} else {
+			message strcharinfo(0), "You got yourself a brand new cart!";
+		}
+	} else if (.@gotFalcon) {
+		if (.@gotRide) {
+			message strcharinfo(0), "You got yourself a fiercy falcon and a loyal ride!";
+		} else {
+			message strcharinfo(0), "You got yourself a fiercy falcon!";
+		}
+	} else if (.@gotRide) {
+		message strcharinfo(0), "You got yourself a loyal ride!";
+	} else if (.@hasCart) {
+		if (.@hasFalcon) {
+			if (.@hasRide) {
+				message strcharinfo(0), "You already have a cart, a falcon and a ride.";
+			} else {
+				message strcharinfo(0), "You already have a cart and a falcon.";
+			}
+		} else if (.@hasRide) {
+			message strcharinfo(0), "You already have a cart and a ride.";
+		} else {
+			message strcharinfo(0), "You already have a cart.";
+		}
+	} else if (.@hasFalcon) {
+		if (.@hasRide) {
+			message strcharinfo(0), "You already have a falcon and a ride.";
+		} else {
+			message strcharinfo(0), "You already have a falcon.";
+		}
+	} else if (.@hasRide) {
+		message strcharinfo(0), "You already have a ride.";
+	}
+
+	end;
+}
