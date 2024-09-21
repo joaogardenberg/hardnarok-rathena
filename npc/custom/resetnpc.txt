@@ -22,22 +22,23 @@ prontera,142,179,7	script	Reset Girl	4_F_TELEPORTER,{
 	switch(.@service) {
 		case 1:
 			resetstatus;
-			specialeffect2 EF_BLOODDRAIN;
 			message strcharinfo(0), "Your Stats were reset.";
+			specialeffect2 EF_BLOODDRAIN;
 			break;
 		case 2:
 			resetskill;
 			callfunc "F_GetPlatinumSkills";
-			specialeffect2 EF_ENERGYDRAIN;
 			message strcharinfo(0), "Your Skills were reset.";
+			specialeffect2 EF_ENERGYDRAIN;
 			break;
 		default:
 			resetstatus;
-			specialeffect2 EF_BLOODDRAIN;
 			resetskill;
 			callfunc "F_GetPlatinumSkills";
-			specialeffect2 EF_ENERGYDRAIN;
 			message strcharinfo(0), "Your Stats & Skills were reset.";
+			specialeffect2 EF_BLOODDRAIN;
+			sleep2 50;
+			specialeffect2 EF_ENERGYDRAIN;
 	}
 
 	zeny = zeny - .@price;
