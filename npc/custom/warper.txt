@@ -199,139 +199,129 @@ T30: Go("yuno", 157, 51);
 
 menu	"Amatsu Fields", F1,
 		"Ayothaya Fields", F2,
-		"Bifrost Fields", F3,
-    	"Brasilis Fields", F4,
-		"Comodo Fields", F5,
-		"Dewata Fields", F6,
-    	"Eclage Fields", F7,
-		"Einbroch Fields", F8,
-		"El Dicastes Fields", F9,
-    	"Frozen Scale Fields", F10,
-		"Geffen Fields", F11,
-		"Grey Wolf Forest", F12,
-		"Hugel Fields", F13,
-		"Juno Fields", F14,
-		"Kiwawa Desert", F15,
-		"Kunlun Fields", F16,
-		"Lasagna Fields", F17,
-		"Lighthalzen Fields", F18,
-		"Luoyang Field", F19,
-		"Lutie Field", F20,
-		"Malaya Fields", F21,
-		"Manuk Fields", F22,
-		"Mjolnir Fields", F23,
-		"Moscovia Fields", F24,
-		"Niflheim Fields", F25,
-		"Payon Forests", F26,
-		"Prontera Fields", F27,
-		"Rachel Fields", F28,
-		"Sograt Deserts", F29,
-		"Splendide Fields", F30,
-		"Umbala Fields", F31,
-		"Veins Fields", F32;
+		"Comodo Fields", F3,
+		"Einbroch Fields", F4,
+		"Geffen Fields", F5,
+		"Hugel Fields", F6,
+		"Kunlun Fields", F7,
+		"Lighthalzen Fields", F8,
+		"Luoyang Field", F9,
+		"Lutie Field", F10,
+		"Manuk Fields", F11,
+		"Mjolnir Fields", F12,
+		"Moscovia Fields", F13,
+		"Niflheim Fields", F14,
+		"Payon Forests", F15,
+		"Prontera Fields", F16,
+		"Rachel Fields", F17,
+		"Sograt Deserts", F18,
+		"Splendide Fields", F19,
+		"Umbala Fields", F20,
+		"Veins Fields", F21,
+		"Yuno Fields", F22;
 
-F1: setarray @c[2], 190, 197;
+F1: setarray @c[2],
+	73, 35; // ama_fild01
 	Disp("Amatsu Field", 1, 1);
 	Pick("ama_fild");
-F2: setarray @c[2], 173, 134, 212, 150;
+F2: setarray @c[2],
+	37, 241, // ayo_fild01
+	30, 135; // ayo_fild02
 	Disp("Ayothaya Field", 1, 2);
 	Pick("ayo_fild");
-F3: Restrict("RE");
-	setarray @c[2], 193, 220, 220, 187;
-	Disp("Bifrost Field", 1, 2);
-	Pick("bif_fild");
-F4: Restrict("Brasilis");
-	setarray @c[2], 74, 32;
-	Disp("Brasilis Field", 1, 1);
-	Pick("bra_fild");
-F5: Restrict("Pre-RE", 5);
-	setarray @c[2], 180, 178, 231, 160, 191, 172, 228, 194, 224, 203, 190, 223, 234, 177, 194, 175, 172, 172;
+F3: Restrict("Pre-RE", 5);
+	setarray @c[2],
+	30, 317,  // cmd_fild01
+	222, 372, // cmd_fild02
+	27, 68,   // cmd_fild03
+	181, 367, // cmd_fild04
+	26, 161,  // cmd_fild05
+	150, 374, // cmd_fild06
+	147, 370, // cmd_fild07
+	31, 359,  // cmd_fild08
+	76, 375;  // cmd_fild09
 	Disp("Comodo Field", 1, 9);
 	Pick("cmd_fild");
-F6: Restrict("RE");
-	setarray @c[2], 371, 212;
-	Disp("Dewata Field", 1, 1);
-	Pick("dew_fild");
-F7: Restrict("RE");
-	setarray @c[2], 97, 314;
-	Disp("Eclage Field", 1, 1);
-	Pick("ecl_fild");
-F8: Restrict("Pre-RE", 2, 10);
-	setarray @c[2], 142, 225, 182, 141, 187, 228, 185, 173, 216, 173, 195, 148, 272, 220, 173, 214, 207, 174, 196, 200;
+F4: Restrict("Pre-RE", 2, 10);
+	setarray @c[2],
+	28, 255,  // ein_fild01
+	109, 358, // ein_fild02
+	258, 267, // ein_fild03
+	22, 251,  // ein_fild04
+	336, 292, // ein_fild05
+	47, 166,  // ein_fild06
+	147, 360, // ein_fild07
+	164, 377, // ein_fild08
+	74, 350,  // ein_fild09
+	26, 331;  // ein_fild10
 	Disp("Einbroch Field", 1, 10);
 	Pick("ein_fild");
-F9: Restrict("RE");
-	setarray @c[2], 143, 132, 143, 217;
-	Disp("El Dicastes Field", 1, 2);
-	Pick("dic_fild");
-F10: Restrict("RE");
-	 setarray @c[2], 378, 223, 223, 18, 365, 241, 140, 280;
-	 Disp("Frozen Scale Hill:Frozen Scale Plains:Frozen Scale Glacier:Frozen Tail");
-	 Pick("", "jor_back1", "jor_back2", "jor_back3", "jor_tail");
-F11: Restrict("Pre-RE", 13, 15);
-	 setarray @c[0], 46, 199, 213, 204, 195, 212, 257, 192, 188, 171, 166, 263, 248, 158, 195, 191, 186, 183, 221, 117, 178, 218, 136, 328, 240, 181, 235, 235, 211, 185;
+F5: Restrict("Pre-RE", 13, 15);
+	 setarray @c[0],
+	 46, 199,  // gef_fild00
+	 69, 20,   // gef_fild01
+	 19, 275,  // gef_fild02
+	 379, 277, // gef_fild03
+	 187, 42,  // gef_fild04
+	 361, 309, // gef_fild05
+	 379, 211, // gef_fild06
+	 336, 187, // gef_fild07
+	 357, 187, // gef_fild08
+	 27, 56,   // gef_fild09
+	 251, 368, // gef_fild10
+	 114, 360, // gef_fild11
+	 364, 180, // gef_fild12
+	 41, 369,  // gef_fild13
+	 367, 219; // gef_fild14
 	 Disp("Geffen Field", 0, 14);
 	 Pick("gef_fild", 1);
-F12: Restrict("RE");
-	 setarray @c[2], 22, 315, 122, 388;
-	 Disp("Grey Wolf Forest", 1, 2);
-	 Pick("gw_fild");
-F13: Restrict("Pre-RE", 3, 7);
-	 setarray @c[2], 268, 101, 222, 193, 232, 185, 252, 189, 196, 106, 216, 220, 227, 197;
+F6: Restrict("Pre-RE", 3, 7);
+	 setarray @c[2],
+	 361, 189, // hu_fild01
+	 280, 31,  // hu_fild02
+	 30, 163,  // hu_fild03
+	 379, 187, // hu_fild04
+	 347, 130, // hu_fild05
+	 200, 367, // hu_fild06
+	 80, 369;  // hu_fild07
 	 Disp("Hugel Field", 1, 7);
 	 Pick("hu_fild");
-F14: Restrict("Pre-RE", 5, 10);
-	 setarray @c[2], 189, 224, 192, 207, 221, 157, 226, 199, 223, 177, 187, 232, 231, 174, 196, 203, 183, 214, 200, 124, 195, 226, 210, 304;
-	 Disp("Juno Field", 1, 12);
-	 Pick("yuno_fild");
-F15: Restrict("RE");
-	 setarray @c[2], 38, 246, 31, 207;
-	 Disp("Kiwawa Desert", 1, 2);
-	 Pick("", "rockrdg1", "rockrdg2");
-F16: setarray @c[2], 220, 227;
+F7: setarray @c[2], 220, 227;
 	 Disp("Kunlun Field", 1, 1);
 	 Pick("gon_fild");
-F17: Restrict("RE");
-	 setarray @c[2], 344, 371, 20, 98;
-	 Disp("Lasagna Field", 1, 2);
-	 Pick("lasa_fild");	 
-F18: setarray @c[2], 240, 179, 185, 235, 240, 226;
+F8: setarray @c[2], 240, 179, 185, 235, 240, 226;
 	 Disp("Lighthalzen Field", 1, 3);
 	 Pick("lhz_fild");
-F19: setarray @c[2], 229, 187;
+F9: setarray @c[2], 229, 187;
 	 Disp("Luoyang Field", 1, 1);
 	 Pick("lou_fild");
-F20: setarray @c[2], 115, 145;
+F10: setarray @c[2], 115, 145;
 	 Disp("Lutie Field", 1, 1);
 	 Pick("xmas_fild");
-F21: Restrict("RE");
-	 setarray @c[2], 40, 272, 207, 180;
-	 Disp("Malaya Field", 1, 2);
-	 Pick("ma_fild");
-F22: setarray @c[2], 35, 236, 35, 262, 84, 365;
+F11: setarray @c[2], 35, 236, 35, 262, 84, 365;
 	 Disp("Manuk Field", 1, 3);
 	 Pick("man_fild");
-F23: setarray @c[2], 204, 120, 175, 193, 208, 213, 179, 180, 181, 240, 195, 270, 235, 202, 188, 215, 205, 144, 245, 223, 180, 206, 196, 208;
+F12: setarray @c[2], 204, 120, 175, 193, 208, 213, 179, 180, 181, 240, 195, 270, 235, 202, 188, 215, 205, 144, 245, 223, 180, 206, 196, 208;
 	 Disp("Mjolnir Field", 1, 12);
 	 Pick("mjolnir_");
-F24: setarray @c[2], 82, 104, 131, 147;
+F13: setarray @c[2], 82, 104, 131, 147;
 	 Disp("Moscovia Field", 1, 2);
 	 Pick("mosk_fild");
-F25: setarray @c[2], 215, 229, 167, 234;
+F14: setarray @c[2], 215, 229, 167, 234;
 	 Disp("Niflheim Field", 1, 2);
 	 Pick("nif_fild");
-F26: Restrict("Pre-RE", 5, 11);
+F15: Restrict("Pre-RE", 5, 11);
 	 setarray @c[2], 158, 206, 151, 219, 205, 148, 186, 247, 134, 204, 193, 235, 200, 177, 137, 189, 201, 224, 160, 205, 194, 150;
 	 Disp("Payon Forest", 1, 11);
 	 Pick("pay_fild");
-F27: setarray @c[0], 208, 227, 190, 206, 240, 206, 190, 143, 307, 252, 239, 213, 185, 188, 193, 194, 187, 218, 210, 183, 195, 149, 198, 164;
+F16: setarray @c[0], 208, 227, 190, 206, 240, 206, 190, 143, 307, 252, 239, 213, 185, 188, 193, 194, 187, 218, 210, 183, 195, 149, 198, 164;
 	 Disp("Prontera Field", 0, 11);
 	 Pick("prt_fild", 1);
-F28: Restrict("Pre-RE", 2, 7, 9, 10, 11, 13);
+F17: Restrict("Pre-RE", 2, 7, 9, 10, 11, 13);
 	 setarray @c[2], 192, 162, 235, 166, 202, 206, 202, 208, 225, 202, 202, 214, 263, 196, 217, 201, 87, 121, 277, 181, 221, 185, 175, 200, 174, 197;
 	 Disp("Rachel Field", 1, 13);
 	 Pick("ra_fild");
-F29: if (.Satan_Morocc) {
+F18: if (.Satan_Morocc) {
 	 	setarray @c[2], 219, 205, 177, 206, 194, 182, 224, 170, 198, 216, 156, 187, 185, 263, 206, 228, 208, 238, 209, 223, 85, 97, 207, 202, 31, 195, 38, 195;
 	 	Disp("Sograt Desert 1:Sograt Desert 2:Sograt Desert 3:Sograt Desert 7:Sograt Desert 11:Sograt Desert 12:Sograt Desert 13:Sograt Desert 16:Sograt Desert 17:Sograt Desert 18:Sograt Desert 19:Sograt Desert 20:Sograt Desert 21:Sograt Desert 22");
 	 	Pick("", "moc_fild01", "moc_fild02", "moc_fild03", "moc_fild07", "moc_fild11", "moc_fild12", "moc_fild13", "moc_fild16", "moc_fild17", "moc_fild18", "moc_fild19", "moc_fild20", "moc_fild21", "moc_fild22");
@@ -340,16 +330,32 @@ F29: if (.Satan_Morocc) {
 	 	Disp("Sograt Desert", 1, 19);
 		Pick("moc_fild");
 	 }
-F30: setarray @c[2], 175, 186, 236, 184, 188, 204;
+F19: setarray @c[2], 175, 186, 236, 184, 188, 204;
 	 Disp("Splendide Field", 1, 3);
 	 Pick("spl_fild");
-F31: setarray @c[2], 217, 206, 223, 221, 237, 215, 202, 197;
+F20: setarray @c[2], 217, 206, 223, 221, 237, 215, 202, 197;
 	 Disp("Umbala Field", 1, 4);
 	 Pick("um_fild");
-F32: Restrict("Pre-RE", 5);
+F21: Restrict("Pre-RE", 5);
 	 setarray @c[2], 186, 175, 196, 370, 222, 45, 51, 250, 202, 324, 150, 223, 149, 307;
 	 Disp("Veins Field", 1, 7);
 	 Pick("ve_fild");
+F22: Restrict("Pre-RE", 5, 10);
+	 setarray @c[2],
+	 70, 376,  // yuno_fild01
+	 20, 337,  // yuno_fild02
+	 22, 155,  // yuno_fild03
+	 231, 285, // yuno_fild04
+	 59, 30,   // yuno_fild05
+	 217, 29,  // yuno_fild06
+	 179, 352, // yuno_fild07
+	 22, 278,  // yuno_fild08
+	 21, 194,  // yuno_fild09
+	 44, 183,  // yuno_fild10
+	 92, 369,  // yuno_fild11
+	 25, 338;  // yuno_fild12
+	 Disp("Juno Field", 1, 12);
+	 Pick("yuno_fild");
 
 // --------------------------------------------------
 	Dungeons:
@@ -1578,52 +1584,52 @@ OnInit:
 // --------------------------------------------------
 //	Duplicates:
 // --------------------------------------------------
-alb2trea,57,70,6	duplicate(Warper)	Warper#tre	1_F_GYPSY
-alberta,28,240,4	duplicate(Warper)	Warper#alb	1_F_GYPSY
-aldebaran,145,118,4	duplicate(Warper)	Warper#alde	1_F_GYPSY
-amatsu,203,87,4	duplicate(Warper)	Warper#ama	1_F_GYPSY
-ayothaya,209,169,6	duplicate(Warper)	Warper#ayo	1_F_GYPSY
-comodo,194,158,4	duplicate(Warper)	Warper#com	1_F_GYPSY
-einbech,59,38,6	duplicate(Warper)	Warper#einbe	1_F_GYPSY
-einbroch,69,202,4	duplicate(Warper)	Warper#einbr	1_F_GYPSY
-gef_fild10,71,339,4	duplicate(Warper)	Warper#orc	1_F_GYPSY
-geffen,124,72,4	duplicate(Warper)	Warper#gef	1_F_GYPSY
-glast_01,372,308,4	duplicate(Warper)	Warper#glh	1_F_GYPSY
-gonryun,162,122,4	duplicate(Warper)	Warper#gon	1_F_GYPSY
-hugel,101,151,4	duplicate(Warper)	Warper#hug	1_F_GYPSY
-izlu2dun,110,92,4	duplicate(Warper)	Warper#izd	1_F_GYPSY
-izlude,134,150,4	duplicate(Warper)	Warper#izl	1_F_GYPSY	//Pre-RE: (132,120)
-jawaii,253,138,4	duplicate(Warper)	Warper#jaw	1_F_GYPSY
-lighthalzen,162,102,4	duplicate(Warper)	Warper#lhz	1_F_GYPSY
-louyang,208,103,6	duplicate(Warper)	Warper#lou	1_F_GYPSY
-manuk,274,146,6	duplicate(Warper)	Warper#man	1_F_GYPSY
-mid_camp,216,288,4	duplicate(Warper)	Warper#mid	1_F_GYPSY
-mjolnir_02,85,364,4	duplicate(Warper)	Warper#mjo	1_F_GYPSY
-moc_ruins,64,164,4	duplicate(Warper)	Warper#moc	1_F_GYPSY
-morocc,159,97,4	duplicate(Warper)	Warper#mor	1_F_GYPSY
-moscovia,229,191,4	duplicate(Warper)	Warper#mos	1_F_GYPSY
-nameless_n,259,213,4	duplicate(Warper)	Warper#nam	1_F_GYPSY
-niflheim,205,179,4	duplicate(Warper)	Warper#nif	1_F_GYPSY
-pay_arche,42,134,4	duplicate(Warper)	Warper#arc	1_F_GYPSY
-payon,182,108,4	duplicate(Warper)	Warper#pay	1_F_GYPSY
-prontera,162,194,3	duplicate(Warper)	Warper#prt	1_F_GYPSY
-prt_fild05,279,223,6	duplicate(Warper)	Warper#cul	1_F_GYPSY
-rachel,135,116,4	duplicate(Warper)	Warper#rac	1_F_GYPSY
-splendide,205,153,4	duplicate(Warper)	Warper#spl	1_F_GYPSY
-thor_camp,249,76,4	duplicate(Warper)	Warper#thor	1_F_GYPSY
-umbala,106,150,3	duplicate(Warper)	Warper#umb	1_F_GYPSY
-veins,214,123,4	duplicate(Warper)	Warper#ve	1_F_GYPSY
-xmas,150,136,6	duplicate(Warper)	Warper#xmas	1_F_GYPSY
-yuno,162,47,4	duplicate(Warper)	Warper#yuno	1_F_GYPSY
+alb2trea,57,70,6	duplicate(Warper)	Warper#tre	1_F_03
+alberta,28,240,4	duplicate(Warper)	Warper#alb	1_F_03
+aldebaran,145,118,4	duplicate(Warper)	Warper#alde	1_F_03
+amatsu,203,87,4	duplicate(Warper)	Warper#ama	1_F_03
+ayothaya,209,169,6	duplicate(Warper)	Warper#ayo	1_F_03
+comodo,194,158,4	duplicate(Warper)	Warper#com	1_F_03
+einbech,59,38,6	duplicate(Warper)	Warper#einbe	1_F_03
+einbroch,69,202,4	duplicate(Warper)	Warper#einbr	1_F_03
+gef_fild10,71,339,4	duplicate(Warper)	Warper#orc	1_F_03
+geffen,124,72,4	duplicate(Warper)	Warper#gef	1_F_03
+glast_01,372,308,4	duplicate(Warper)	Warper#glh	1_F_03
+gonryun,162,122,4	duplicate(Warper)	Warper#gon	1_F_03
+hugel,101,151,4	duplicate(Warper)	Warper#hug	1_F_03
+izlu2dun,110,92,4	duplicate(Warper)	Warper#izd	1_F_03
+izlude,134,150,4	duplicate(Warper)	Warper#izl	1_F_03	//Pre-RE: (132,120)
+jawaii,253,138,4	duplicate(Warper)	Warper#jaw	1_F_03
+lighthalzen,162,102,4	duplicate(Warper)	Warper#lhz	1_F_03
+louyang,208,103,6	duplicate(Warper)	Warper#lou	1_F_03
+manuk,274,146,6	duplicate(Warper)	Warper#man	1_F_03
+mid_camp,216,288,4	duplicate(Warper)	Warper#mid	1_F_03
+mjolnir_02,85,364,4	duplicate(Warper)	Warper#mjo	1_F_03
+moc_ruins,64,164,4	duplicate(Warper)	Warper#moc	1_F_03
+morocc,159,97,4	duplicate(Warper)	Warper#mor	1_F_03
+moscovia,229,191,4	duplicate(Warper)	Warper#mos	1_F_03
+nameless_n,259,213,4	duplicate(Warper)	Warper#nam	1_F_03
+niflheim,205,179,4	duplicate(Warper)	Warper#nif	1_F_03
+pay_arche,42,134,4	duplicate(Warper)	Warper#arc	1_F_03
+payon,182,108,4	duplicate(Warper)	Warper#pay	1_F_03
+prontera,162,194,3	duplicate(Warper)	Warper#prt	1_F_03
+prt_fild05,279,223,6	duplicate(Warper)	Warper#cul	1_F_03
+rachel,135,116,4	duplicate(Warper)	Warper#rac	1_F_03
+splendide,205,153,4	duplicate(Warper)	Warper#spl	1_F_03
+thor_camp,249,76,4	duplicate(Warper)	Warper#thor	1_F_03
+umbala,106,150,3	duplicate(Warper)	Warper#umb	1_F_03
+veins,214,123,4	duplicate(Warper)	Warper#ve	1_F_03
+xmas,150,136,6	duplicate(Warper)	Warper#xmas	1_F_03
+yuno,162,47,4	duplicate(Warper)	Warper#yuno	1_F_03
 
 // --------------------------------------------------
 //	Duplicates (Renewal):
 // --------------------------------------------------
-brasilis,201,222,4	duplicate(Warper)	Warper#bra	1_F_GYPSY
-dewata,204,186,6	duplicate(Warper)	Warper#dew	1_F_GYPSY
-dicastes01,194,194,6	duplicate(Warper)	Warper#dic	1_F_GYPSY
-ecl_in01,51,60,4	duplicate(Warper)	Warper#ecl	1_F_GYPSY
-lasagna,196,187,4	duplicate(Warper)	Warper#las	1_F_GYPSY
-malangdo,134,117,6	duplicate(Warper)	Warper#mal	1_F_GYPSY
-malaya,231,204,4	duplicate(Warper)	Warper#ma	1_F_GYPSY
-mora,57,152,4	duplicate(Warper)	Warper#mora	1_F_GYPSY
+brasilis,201,222,4	duplicate(Warper)	Warper#bra	1_F_03
+dewata,204,186,6	duplicate(Warper)	Warper#dew	1_F_03
+dicastes01,194,194,6	duplicate(Warper)	Warper#dic	1_F_03
+ecl_in01,51,60,4	duplicate(Warper)	Warper#ecl	1_F_03
+lasagna,196,187,4	duplicate(Warper)	Warper#las	1_F_03
+malangdo,134,117,6	duplicate(Warper)	Warper#mal	1_F_03
+malaya,231,204,4	duplicate(Warper)	Warper#ma	1_F_03
+mora,57,152,4	duplicate(Warper)	Warper#mora	1_F_03
