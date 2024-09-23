@@ -3651,7 +3651,7 @@ turbo_room,130,92,3	script	Kafra Staff#tt	115,{
 	mes "Service here will change your";
 	mes "Respawn Point to Al De Baran.";
 	mes "Now, how may I assist you?";
-	callfunc "F_Kafra",5,8,1,40,0;
+	callfunc "F_Kafra", 5;
 
 	M_Save:
 		savepoint "aldebaran",168,112,1,1;

@@ -29,7 +29,7 @@ L_StartG:
 	set @wrpP[0], 200;
 	set @wrpD$[0], getarg(1);
 	setarray @wrpC$[0], @wrpD$[0]+" ^880000"+@wrpP[0]+"^000000 z", "Cancel", "", "", "","";
-	callfunc "F_Kafra",2,0,0,0,800;
+	callfunc "F_Kafra", 2;
 	end;
 }
 

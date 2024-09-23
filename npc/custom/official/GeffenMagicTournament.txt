@@ -607,7 +607,7 @@ OnTouch_:
 	mes "The Kafra Services.";
 	mes "are always on your side.";
 	mes "So how can I help you?";
-	callfunc "F_Kafra",5,5,1,50,0;
+	callfunc "F_Kafra", 5;
 }
 
 
