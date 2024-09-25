@@ -5,8 +5,11 @@
 	.@buffs = 1;
 	.@delay = 3000;
 
-	if (@cooldown > gettimetick(0))
+	if (@cooldown > gettimetick(0)) {
+		.@seconds = (@cooldown - gettimetick(0)) / 1000 + 1;
+		message strcharinfo(0), "Try again in " + .@seconds + " second" + (.@seconds == 1 ? "" : "s") + ".";
 		end;
+	}
 
 	if (.@price) {
 		if (zeny < .@price) {
@@ -15,7 +18,9 @@
 		}
 
 		zeny -= .@price;
-		message strcharinfo(0), "You healed for " + callfunc("F_InsertComma", .@price) + " Zeny.";
+		message strcharinfo(0), "You were healed for " + callfunc("F_InsertComma", .@price) + " Zeny.";
+	} else {
+		message strcharinfo(0), "You were healed.";
 	}
 
 	specialeffect2 EF_HEAL2;
